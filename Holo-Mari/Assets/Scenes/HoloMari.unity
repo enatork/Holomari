@@ -206,6 +206,7 @@ GameObject:
   - 114: {fileID: 889007144}
   - 114: {fileID: 889007146}
   - 114: {fileID: 889007147}
+  - 114: {fileID: 889007148}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -287,6 +288,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   katamari: {fileID: 1000013470773922, guid: 84994cb8838d61e469742a7a3a9a3b87, type: 2}
+  spawner: {fileID: 0}
+--- !u!114 &889007148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 889007143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef26a362f41c5248aca879be2a5f04b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1044512242
 Prefab:
   m_ObjectHideFlags: 0

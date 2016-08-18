@@ -6,6 +6,7 @@ public class Environment : Singleton<Environment>
 {
 
     public GameObject katamari;
+    public GameObject spawner;
     private bool isSpawned = false;
     // Use this for initialization
     void Start()
@@ -22,9 +23,11 @@ public class Environment : Singleton<Environment>
     public void SpawnKatamari()
     {
         if (!isSpawned) {
+            SpatialMappingManager.Instance.drawVisualMeshes = false;
             isSpawned = true;
             GameObject k = (GameObject)Instantiate(katamari, Camera.main.transform.position + Vector3.forward, Quaternion.identity);
-            SpatialMappingManager.Instance.drawVisualMeshes = false;
+            GameObject s = (GameObject)Instantiate(spawner, Camera.main.transform.position + new Vector3(0, 1, 1), Quaternion.identity);
+            
         }
           
     }

@@ -4,15 +4,18 @@ using System.Collections;
 public class Stickable : MonoBehaviour {
 
     private bool stuck = false;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public float attractionForce;
+    private Rigidbody rb;
+    // Use this for initialization
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
+    {
+        rb.AddForce(transform.localPosition * -attractionForce);
+    }
 
     public void Stick(Transform parent) {
         transform.parent = parent;

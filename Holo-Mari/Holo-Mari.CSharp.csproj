@@ -78,6 +78,9 @@
     <Compile Include="Assets\AppScripts\Environment.cs" />
     <Compile Include="Assets\AppScripts\KatamariController.cs" />
     <Compile Include="Assets\AppScripts\MeshController.cs" />
+    <Compile Include="Assets\AppScripts\Nucleon.cs" />
+    <Compile Include="Assets\AppScripts\NucleonSpawner.cs" />
+    <Compile Include="Assets\AppScripts\Spawner.cs" />
     <Compile Include="Assets\AppScripts\Stickable.cs" />
     <Compile Include="Assets\HoloToolkit\CrossPlatform\Scripts\MetroHandleRef.cs" />
     <Compile Include="Assets\HoloToolkit\CrossPlatform\Scripts\Reflection\ReflectionExtensions.cs" />
@@ -231,7 +234,6 @@
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\PlaneTargetGroup.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\PlaneTargetGroupPicker.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\TextToSpeechManagerTest.cs" />
-    <Compile Include="Assets\Spawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\HoloToolkit\Input\Shaders\CursorShader.shader" />
