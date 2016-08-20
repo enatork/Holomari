@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+[RequireComponent(typeof(Rigidbody))]
 public class KatamariController : MonoBehaviour {
 
-	// Use this for initialization
+    // Use this for initialization
+
+    private Rigidbody rb;
 	void Start () {
-	
+        rb = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -19,5 +21,10 @@ public class KatamariController : MonoBehaviour {
             Stickable gb = co.gameObject.GetComponent<Stickable>();
             gb.Stick(gameObject.transform);
         }
+    }
+
+    public void OnSelect() {
+        rb.AddTorque(Camera.main.transform.right * 10000f);
+        rb.AddForce(Camera.main.transform.forward * 5000f);
     }
 }

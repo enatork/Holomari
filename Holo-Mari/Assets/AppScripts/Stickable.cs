@@ -28,4 +28,17 @@ public class Stickable : MonoBehaviour {
         joint.breakForce = 1050f;
 
     }
+
+    void OnJointBreak(float breakForce)
+    {
+        Debug.Log("A joint has just been broken!, force: " + breakForce);
+        gameObject.tag = "Stickable";
+        stuck = false;
+        transform.parent = null;
+        foreach (Stickable stickable in gameObject.transform.GetComponentsInChildren<Stickable>())
+        {
+            stickable.gameObject.tag = "Stickable";
+        }
+
+    }
 }

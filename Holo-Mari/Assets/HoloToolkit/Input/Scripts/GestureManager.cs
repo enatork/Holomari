@@ -47,6 +47,7 @@ namespace HoloToolkit.Unity
             gestureRecognizer.SetRecognizableGestures(GestureSettings.Tap);
 
             gestureRecognizer.TappedEvent += GestureRecognizer_TappedEvent;
+            
 
             // Start looking for gestures.
             gestureRecognizer.StartCapturingGestures();
@@ -56,7 +57,10 @@ namespace HoloToolkit.Unity
         {
             if (focusedObject != null)
             {
-                focusedObject.SendMessage("OnSelect");
+                if (focusedObject.tag == "Katamari") {
+                    focusedObject.SendMessage("OnSelect");
+                }
+                
             }
         }
 
@@ -64,6 +68,7 @@ namespace HoloToolkit.Unity
         {
             OnTap();
         }
+
 
         void LateUpdate()
         {

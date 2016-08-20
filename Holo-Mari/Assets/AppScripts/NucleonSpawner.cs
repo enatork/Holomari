@@ -20,7 +20,7 @@ public class NucleonSpawner : MonoBehaviour
 
     bool isDone = false;
 
-    public Stickable[] spawnedNucleons;
+    private Stickable[] spawnedNucleons;
 
     void Awake()
     {
@@ -55,9 +55,12 @@ public class NucleonSpawner : MonoBehaviour
         {
             nucleon.attractionForce = nucleon.attractionForce * -1;
         }
-        yield return new WaitForSeconds(5);
-        Array.Clear(spawnedNucleons, 0, spawnedNucleons.Length);
-        spawnCount = 0;
+        yield return new WaitForSeconds(1f);
+        foreach (Stickable nucleon in spawnedNucleons)
+        {
+            Rigidbody nrb = nucleon.GetComponent<Rigidbody>();
+            nrb.useGravity = true;
+        }
     }
 
     void SpawnNucleon()
@@ -66,6 +69,7 @@ public class NucleonSpawner : MonoBehaviour
         
         
         Vector3 pos = UnityEngine.Random.onUnitSphere * spawnDistance + transform.localPosition;
+        
         Stickable spawn = (Stickable)Instantiate(prefab, pos, Quaternion.identity);
         spawn.transform.parent = transform;
         spawnedNucleons[spawnCount] = spawn;
