@@ -44,10 +44,13 @@ namespace HoloToolkit.Unity
         {
             // Create a new GestureRecognizer. Sign up for tapped events.
             gestureRecognizer = new GestureRecognizer();
-            gestureRecognizer.SetRecognizableGestures(GestureSettings.Tap);
+            gestureRecognizer.SetRecognizableGestures(GestureSettings.Tap | GestureSettings.Hold);
+
 
             gestureRecognizer.TappedEvent += GestureRecognizer_TappedEvent;
-            
+            gestureRecognizer.HoldStartedEvent += GestureRecongnizer_HoldEventStart;
+            gestureRecognizer.HoldCompletedEvent += GestureRecongnizer_HoldEventComplete;
+            gestureRecognizer.HoldCanceledEvent += GestureRecongnizer_HoldEventComplete;
 
             // Start looking for gestures.
             gestureRecognizer.StartCapturingGestures();
@@ -57,11 +60,28 @@ namespace HoloToolkit.Unity
         {
             if (focusedObject != null)
             {
-                if (focusedObject.tag == "Katamari") {
-                    focusedObject.SendMessage("OnSelect");
+                if (focusedObject.tag == "Katamari")
+                {
+                    focusedObject.SendMessage("Jump");
                 }
-                
+
             }
+        }
+
+        private void GestureRecongnizer_HoldEventStart(InteractionSourceKind source, Ray headRay)
+        {
+            if (focusedObject != null)
+            {
+                if (focusedObject.tag == "Katamari")
+                {
+                    focusedObject.SendMessage("Push");
+                }
+            }
+        }
+
+        private void GestureRecongnizer_HoldEventComplete(InteractionSourceKind source, Ray headRay)
+        {
+            focusedObject.SendMessage("EndPush");
         }
 
         private void GestureRecognizer_TappedEvent(InteractionSourceKind source, int tapCount, Ray headRay)

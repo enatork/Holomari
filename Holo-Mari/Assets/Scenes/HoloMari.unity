@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimumFloors: 1
-  secondaryMaterial: {fileID: 0}
+  secondaryMaterial: {fileID: 2100000, guid: d698790d3facd3d4289a13fa1243030a, type: 2}
   katamari: {fileID: 1000013470773922, guid: 84994cb8838d61e469742a7a3a9a3b87, type: 2}
   spawner: {fileID: 1070764872}
 --- !u!114 &889007148
@@ -408,7 +408,12 @@ Prefab:
     - target: {fileID: 114000012047805586, guid: 28114d2852145b8438c70a0ca10b6b20,
         type: 2}
       propertyPath: drawPlanesMask
-      value: 7
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012047805586, guid: 28114d2852145b8438c70a0ca10b6b20,
+        type: 2}
+      propertyPath: destroyPlanesMask
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000012611788298, guid: 28114d2852145b8438c70a0ca10b6b20, type: 2}
