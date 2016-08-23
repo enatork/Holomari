@@ -16,8 +16,9 @@ public class KatamariController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (isPushing && gestureManager.FocusedObject.tag == "Katamari") {
-            rb.AddTorque(Camera.main.transform.right * 5000f);
+        if (isPushing && gestureManager.FocusedObject.tag == "Katamari")
+        {
+            rb.AddTorque(Camera.main.transform.right * 10000f);
         }
     }
 

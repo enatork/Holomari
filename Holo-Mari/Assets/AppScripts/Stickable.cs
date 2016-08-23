@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class Stickable : MonoBehaviour {
+public class Stickable : MonoBehaviour
+{
 
     private bool stuck = false;
     public float attractionForce;
     private Rigidbody rb;
+    public bool isExploded = false;
     // Use this for initialization
     void Awake()
     {
@@ -14,10 +17,15 @@ public class Stickable : MonoBehaviour {
 
     void FixedUpdate()
     {
-        rb.AddForce(transform.localPosition * -attractionForce);
+        if (!isExploded)
+        {
+            rb.AddForce(transform.localPosition * -attractionForce);
+        }
+
     }
 
-    public void Stick(Transform parent) {
+    public void Stick(Transform parent)
+    {
         transform.parent = parent;
         transform.tag = "Katamari";
         Transform child = transform.GetChild(0);
@@ -39,6 +47,14 @@ public class Stickable : MonoBehaviour {
         {
             stickable.gameObject.tag = "Stickable";
         }
+    }
 
+    void OnCollisionEnter(Collision co)
+    {
+        if (transform.tag == "Katamari" && co.gameObject.tag == "Stickable")
+        {
+            Stickable gb = co.gameObject.GetComponent<Stickable>();
+            gb.Stick(gameObject.transform);
+        }
     }
 }

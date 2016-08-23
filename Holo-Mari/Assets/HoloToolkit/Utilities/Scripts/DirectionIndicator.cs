@@ -41,7 +41,8 @@ namespace HoloToolkit.Unity
         {
             if (Cursor == null)
             {
-                Debug.LogError("Please include a GameObject for the cursor.");
+                GameObject cursor = FindObjectOfType<BasicCursor>().gameObject;
+                Cursor = cursor;
             }
 
             if (DirectionIndicatorObject == null)

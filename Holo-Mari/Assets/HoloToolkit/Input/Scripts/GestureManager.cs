@@ -74,7 +74,7 @@ namespace HoloToolkit.Unity
             {
                 if (focusedObject.tag == "Katamari")
                 {
-                    focusedObject.SendMessage("Push");
+                    focusedObject.SendMessageUpwards("Push");
                 }
             }
         }

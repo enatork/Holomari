@@ -60,6 +60,7 @@ public class NucleonSpawner : MonoBehaviour
         {
             Rigidbody nrb = nucleon.GetComponent<Rigidbody>();
             nrb.useGravity = true;
+            nucleon.isExploded = true;
         }
     }
 
