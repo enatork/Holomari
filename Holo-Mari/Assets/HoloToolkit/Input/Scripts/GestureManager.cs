@@ -37,6 +37,12 @@ namespace HoloToolkit.Unity
             get { return focusedObject; }
         }
 
+        public GameObject Katamari
+        {
+            get; set;
+        }
+
+
         private GestureRecognizer gestureRecognizer;
         private GameObject focusedObject;
 
@@ -64,8 +70,15 @@ namespace HoloToolkit.Unity
                 {
                     focusedObject.SendMessage("Jump");
                 }
+                else
+                {
+                    Katamari.SendMessage("Push");
+                }
 
             }
+
+
+
         }
 
         private void GestureRecongnizer_HoldEventStart(InteractionSourceKind source, Ray headRay)

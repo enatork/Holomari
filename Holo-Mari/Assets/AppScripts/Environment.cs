@@ -15,6 +15,8 @@ public class Environment : Singleton<Environment>
     private bool meshesProcessed = false;
     public GameObject katamari;
     public GameObject spawner;
+    public GameObject startCanvas;
+    public GameObject cursor;
     private bool isSpawned = false;
     // Use this for initialization
     void Start()
@@ -25,7 +27,7 @@ public class Environment : Singleton<Environment>
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void SpawnKatamari()
@@ -43,8 +45,8 @@ public class Environment : Singleton<Environment>
             // Call CreatePlanes() to generate planes.
             CreatePlanes();
             isSpawned = true;
-
-            spawner.SetActive(true);
+            startCanvas.SetActive(false);
+            Instantiate(spawner, Camera.main.transform.position + new Vector3(0, 0, 2f), Quaternion.identity);
             StartCoroutine(Katamari());
         }
     }
@@ -52,6 +54,11 @@ public class Environment : Singleton<Environment>
     private IEnumerator Katamari() {
         WaitForSeconds wait = new WaitForSeconds(1f);
         GameObject k = (GameObject)Instantiate(katamari, Camera.main.transform.position + Vector3.forward, Quaternion.identity);
+        GestureManager.Instance.Katamari = k;
+        KatamariController kc = k.GetComponent<KatamariController>();
+        DirectionIndicator di = k.GetComponent<DirectionIndicator>();
+        di.Cursor = cursor;
+        kc.cursor = cursor;
         yield return wait;
     }
 
